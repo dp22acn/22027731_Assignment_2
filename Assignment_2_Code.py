@@ -105,3 +105,8 @@ ax = sns.barplot(x='Country Name', y='Agricultural land (% of land area)', hue='
                  data=dfYears[['1990', '1995', '2000', '2005', '2010', '2015']].loc[countries].unstack().unstack(level=1).reset_index())
 plt.xticks(fontsize=5)
 plt.savefig('al.png')
+
+# generate a heatmap for Greece and save it
+ax = sns.heatmap(dfCountries['Greece'][indicators].corr(), annot=True)
+ax.set_title("Correlation Matrix for Greece")
+plt.savefig('corrGreece.png')
