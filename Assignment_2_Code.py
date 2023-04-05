@@ -93,3 +93,9 @@ plt.savefig('co2.png')
 # create a multiple line plot
 sns.lineplot(x='Year', y='Energy use (kg of oil equivalent) per $1,000 GDP (constant 2017 PPP)',
              hue='Country Name', data=df[df.Year.isin([str(i) for i in range(1990, 2016, 5)])])
+
+# Let us select data of Agricultural land for three years 1995, 2005 and 2015 and save the dataframe as csv
+col = 'Agricultural land (% of land area)'
+agDf = dfYears[[('1995', col), ('2005', col), ('2015', col)]].loc[countries]
+agDf.columns = agDf.columns.droplevel(1)
+agDf.to_csv('table.csv')
