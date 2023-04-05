@@ -79,3 +79,8 @@ df['Electricity NG Categories'] = pd.cut(df['Electricity production from natural
 ax = sns.barplot(x='Population growth (annual %)',
                  y='Electricity NG Categories', data=df, hue='Country Name')
 plt.savefig('eng.png')
+
+# create a pivot dataframe using two features for creating a stacked bar plot
+pd.crosstab(pd.cut(df['School enrollment, primary and secondary (gross), gender parity index (GPI)'],
+            10), df['Country Name']).plot.bar(stacked=True)
+plt.savefig('ct.png')
