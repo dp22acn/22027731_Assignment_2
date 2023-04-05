@@ -99,3 +99,9 @@ col = 'Agricultural land (% of land area)'
 agDf = dfYears[[('1995', col), ('2005', col), ('2015', col)]].loc[countries]
 agDf.columns = agDf.columns.droplevel(1)
 agDf.to_csv('table.csv')
+
+# create a bar plot for the agricultural land and save it
+ax = sns.barplot(x='Country Name', y='Agricultural land (% of land area)', hue='Year',
+                 data=dfYears[['1990', '1995', '2000', '2005', '2010', '2015']].loc[countries].unstack().unstack(level=1).reset_index())
+plt.xticks(fontsize=5)
+plt.savefig('al.png')
