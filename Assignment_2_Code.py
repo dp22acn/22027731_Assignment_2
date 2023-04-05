@@ -70,6 +70,12 @@ df = dfYears[[str(i) for i in range(1990, 2019)]
 df = df[df["Country Name"].isin(
     countries)][indicators+['Country Name', 'Year']].reset_index(drop=True)
 
+
 # create a new column for mortality rate categories
 df['Electricity NG Categories'] = pd.cut(df['Electricity production from natural gas sources (% of total)'], bins=[
                                          0, 25, 50, 75, 100], labels=['Very Low', 'Low', 'Medium', 'High'])
+
+# create a horizontal bar plot
+ax = sns.barplot(x='Population growth (annual %)',
+                 y='Electricity NG Categories', data=df, hue='Country Name')
+plt.savefig('eng.png')
