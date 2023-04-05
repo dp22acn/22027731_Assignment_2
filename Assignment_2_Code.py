@@ -89,3 +89,7 @@ plt.savefig('ct.png')
 sns.lineplot(x='Year', y='CO2 intensity (kg per kg of oil equivalent energy use)',
              hue='Country Name', data=df[df.Year.isin([str(i) for i in range(1990, 2016, 5)])])
 plt.savefig('co2.png')
+
+# create a multiple line plot
+sns.lineplot(x='Year', y='Energy use (kg of oil equivalent) per $1,000 GDP (constant 2017 PPP)',
+             hue='Country Name', data=df[df.Year.isin([str(i) for i in range(1990, 2016, 5)])])
