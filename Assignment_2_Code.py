@@ -110,3 +110,9 @@ plt.savefig('al.png')
 ax = sns.heatmap(dfCountries['Greece'][indicators].corr(), annot=True)
 ax.set_title("Correlation Matrix for Greece")
 plt.savefig('corrGreece.png')
+
+# generate a heatmap for Dominican Republic and save it
+ax = sns.heatmap(dfCountries['Dominican Republic']
+                 [indicators].corr(), annot=True)
+ax.set_title("Correlation Matrix for Dominican Republic")
+plt.savefig('corrDR.png')
