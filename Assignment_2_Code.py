@@ -47,3 +47,25 @@ def read_csv_data(filename):
         level=1).swaplevel(axis=1).sort_index(axis=1, level=0)
 
     return dfYears, dfCountries
+
+
+dfYears, dfCountries = read_csv_data("worldBankData.csv")
+
+countries = ['United States', 'Greece', 'Lower middle income',
+             'Pacific island small states', 'Dominican Republic']
+indicators = [
+    'Electricity production from natural gas sources (% of total)',
+    'CO2 intensity (kg per kg of oil equivalent energy use)',
+    'Annual freshwater withdrawals, total (billion cubic meters)',
+    'Population growth (annual %)',
+    'Energy use (kg of oil equivalent) per $1,000 GDP (constant 2017 PPP)',
+    'Agricultural land (sq. km)',
+    'Agricultural land (% of land area)',
+    'Foreign direct investment, net inflows (% of GDP)',
+    'School enrollment, primary and secondary (gross), gender parity index (GPI)'
+]
+
+df = dfYears[[str(i) for i in range(1990, 2019)]
+             ].unstack().unstack(level=1).reset_index()
+df = df[df["Country Name"].isin(
+    countries)][indicators+['Country Name', 'Year']].reset_index(drop=True)
