@@ -84,3 +84,8 @@ plt.savefig('eng.png')
 pd.crosstab(pd.cut(df['School enrollment, primary and secondary (gross), gender parity index (GPI)'],
             10), df['Country Name']).plot.bar(stacked=True)
 plt.savefig('ct.png')
+
+# create a multiple line plot
+sns.lineplot(x='Year', y='CO2 intensity (kg per kg of oil equivalent energy use)',
+             hue='Country Name', data=df[df.Year.isin([str(i) for i in range(1990, 2016, 5)])])
+plt.savefig('co2.png')
