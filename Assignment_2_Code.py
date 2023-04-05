@@ -69,3 +69,7 @@ df = dfYears[[str(i) for i in range(1990, 2019)]
              ].unstack().unstack(level=1).reset_index()
 df = df[df["Country Name"].isin(
     countries)][indicators+['Country Name', 'Year']].reset_index(drop=True)
+
+# create a new column for mortality rate categories
+df['Electricity NG Categories'] = pd.cut(df['Electricity production from natural gas sources (% of total)'], bins=[
+                                         0, 25, 50, 75, 100], labels=['Very Low', 'Low', 'Medium', 'High'])
